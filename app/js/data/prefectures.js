@@ -1,0 +1,60 @@
+// Population of the 47 prefectures, 1 October 2023 estimate, in thousands (rounded).
+
+export const REGIONS = ['Hokkaido', 'Tohoku', 'Kanto', 'Chubu', 'Kansai', 'Chugoku', 'Shikoku', 'Kyushu & Okinawa'];
+
+export const PREFECTURES = [
+  ['Hokkaido', 'Hokkaido', 'Sapporo', 5092],
+  ['Aomori', 'Tohoku', 'Aomori', 1184],
+  ['Iwate', 'Tohoku', 'Morioka', 1163],
+  ['Miyagi', 'Tohoku', 'Sendai', 2264],
+  ['Akita', 'Tohoku', 'Akita', 914],
+  ['Yamagata', 'Tohoku', 'Yamagata', 1026],
+  ['Fukushima', 'Tohoku', 'Fukushima', 1767],
+  ['Ibaraki', 'Kanto', 'Mito', 2825],
+  ['Tochigi', 'Kanto', 'Utsunomiya', 1897],
+  ['Gunma', 'Kanto', 'Maebashi', 1902],
+  ['Saitama', 'Kanto', 'Saitama', 7331],
+  ['Chiba', 'Kanto', 'Chiba', 6257],
+  ['Tokyo', 'Kanto', 'Tokyo', 14086],
+  ['Kanagawa', 'Kanto', 'Yokohama', 9229],
+  ['Niigata', 'Chubu', 'Niigata', 2126],
+  ['Toyama', 'Chubu', 'Toyama', 1007],
+  ['Ishikawa', 'Chubu', 'Kanazawa', 1109],
+  ['Fukui', 'Chubu', 'Fukui', 744],
+  ['Yamanashi', 'Chubu', 'Kofu', 802],
+  ['Nagano', 'Chubu', 'Nagano', 2004],
+  ['Gifu', 'Chubu', 'Gifu', 1931],
+  ['Shizuoka', 'Chubu', 'Shizuoka', 3555],
+  ['Aichi', 'Chubu', 'Nagoya', 7477],
+  ['Mie', 'Kansai', 'Tsu', 1727],
+  ['Shiga', 'Kansai', 'Otsu', 1407],
+  ['Kyoto', 'Kansai', 'Kyoto', 2535],
+  ['Osaka', 'Kansai', 'Osaka', 8763],
+  ['Hyogo', 'Kansai', 'Kobe', 5370],
+  ['Nara', 'Kansai', 'Nara', 1306],
+  ['Wakayama', 'Kansai', 'Wakayama', 903],
+  ['Tottori', 'Chugoku', 'Tottori', 537],
+  ['Shimane', 'Chugoku', 'Matsue', 650],
+  ['Okayama', 'Chugoku', 'Okayama', 1847],
+  ['Hiroshima', 'Chugoku', 'Hiroshima', 2738],
+  ['Yamaguchi', 'Chugoku', 'Yamaguchi', 1313],
+  ['Tokushima', 'Shikoku', 'Tokushima', 695],
+  ['Kagawa', 'Shikoku', 'Takamatsu', 926],
+  ['Ehime', 'Shikoku', 'Matsuyama', 1306],
+  ['Kochi', 'Shikoku', 'Kochi', 666],
+  ['Fukuoka', 'Kyushu & Okinawa', 'Fukuoka', 5103],
+  ['Saga', 'Kyushu & Okinawa', 'Saga', 801],
+  ['Nagasaki', 'Kyushu & Okinawa', 'Nagasaki', 1267],
+  ['Kumamoto', 'Kyushu & Okinawa', 'Kumamoto', 1718],
+  ['Oita', 'Kyushu & Okinawa', 'Oita', 1107],
+  ['Miyazaki', 'Kyushu & Okinawa', 'Miyazaki', 1042],
+  ['Kagoshima', 'Kyushu & Okinawa', 'Kagoshima', 1563],
+  ['Okinawa', 'Kyushu & Okinawa', 'Naha', 1468],
+].map(([name, region, capital, pop]) => ({ name, region, capital, pop }));
+
+export function regionTotals() {
+  return REGIONS.map((region) => ({
+    label: region,
+    value: PREFECTURES.filter((p) => p.region === region).reduce((s, p) => s + p.pop, 0),
+  }));
+}
