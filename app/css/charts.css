@@ -17,6 +17,13 @@
 .legend i.exp { background: #2c3a8c; margin-left: 0; }
 .legend i.imp { background: #e08a6f; }
 
+.tilemap .tile { cursor: pointer; }
+.tilemap .tile text { font-size: 11px; font-weight: 700; fill: #1d2340; text-anchor: middle; pointer-events: none; }
+.tilemap .tile text.n { font-size: 10px; font-weight: 500; }
+.tilemap .tile text.on-dark { fill: #fff; }
+.tilemap .tile:hover rect, .tilemap .tile:focus rect { stroke: #c9962b; stroke-width: 2.5; }
+.tilemap .tile.sel rect { stroke: #d9442b; stroke-width: 3.5; }
+
 .rank { list-style: none; margin: 6px 0 0; padding: 0; }
 .rank li { display: grid; grid-template-columns: 120px 1fr 64px; align-items: center; gap: 8px; margin: 7px 0; font-size: 14px; }
 .rank .track { background: #efe9dc; border-radius: 4px; height: 14px; }

@@ -2,6 +2,7 @@
 
 import { figure } from '../ui/figure.js';
 import { rankBars } from '../charts/bar-charts.js';
+import { tileMap } from '../charts/tile-map.js';
 import { PREFECTURES, REGIONS, regionTotals } from '../data/prefectures.js';
 import { num, escapeHtml } from '../format.js';
 
@@ -52,6 +53,15 @@ export function renderPrefectures(state) {
       <tbody id="pref-rows">${prefectureRows(state)}</tbody></table></div>
       <figcaption><span class="src">Source: SBJ population estimates, 2023</span><button class="ghost" data-csv="prefs">Download CSV</button></figcaption>
     </figure>
+    <div class="stack">
+    ${figure({
+      id: 'pref-map',
+      title: 'Map: population by prefecture',
+      takeaway: state.prefQuery ? `Showing ${escapeHtml(state.prefQuery)} in the table. Tap another tile to switch.` : 'Tap a tile to find it in the table.',
+      chart: tileMap({ prefectures: PREFECTURES, selected: PREFECTURES.find((p) => p.name.toLowerCase() === state.prefQuery.trim().toLowerCase())?.name, label: 'Prefecture map' }),
+      source: 'sbj',
+      year: 2023,
+    })}
     ${figure({
       id: 'regions',
       title: 'People by region, thousands',
@@ -61,6 +71,7 @@ export function renderPrefectures(state) {
       year: 2023,
       csv: { header: ['region', 'population_thousands'], rows: regions.map((r) => [r.label, r.value]) },
     })}
+    </div>
   </div>`;
 }
 

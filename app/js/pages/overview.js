@@ -6,6 +6,8 @@ import { POPULATION_MILLIONS, BIRTHS_THOUSANDS, FERTILITY_RATE, AGE_SHARES_2023 
 import { REAL_GDP_GROWTH, UNEMPLOYMENT_RATE, CPI_INFLATION } from '../data/economy.js';
 import { VISITORS_MILLIONS } from '../data/trade-travel.js';
 import { change, num } from '../format.js';
+import { tileMap } from '../charts/tile-map.js';
+import { PREFECTURES } from '../data/prefectures.js';
 
 const last = (s) => s[s.length - 1];
 
@@ -34,6 +36,15 @@ export function renderOverview() {
   </section>
   <div class="grid two">
     ${figure({
+      id: 'ov-map',
+      title: 'Where people live, 47 prefectures',
+      takeaway: 'Darker means more people. Tap a prefecture to open it in the table.',
+      chart: tileMap({ prefectures: PREFECTURES, label: 'Population by prefecture' }),
+      source: 'sbj',
+      year: 2023,
+      csv: { header: ['prefecture', 'population_thousands'], rows: PREFECTURES.map((p) => [p.name, p.pop]) },
+    })}
+    ${figure({
       id: 'ov-pop',
       title: 'Population, 2000 to 2024',
       takeaway: 'Peaked at 128.08 million in 2008; 4.3 million fewer people since.',
@@ -42,6 +53,8 @@ export function renderOverview() {
       year: 2024,
       csv: { header: ['year', 'population_millions'], rows: POPULATION_MILLIONS },
     })}
+  </div>
+  <div class="grid two">
     <aside class="card guide">
       <h3>Find your figure</h3>
       <ul>
@@ -53,6 +66,16 @@ export function renderOverview() {
         <li><a href="#/sources">Who publishes each number, and how</a></li>
       </ul>
       <p class="small">Every chart has a CSV download with the exact numbers shown.</p>
+    </aside>
+    <aside class="card guide">
+      <h3>Latest releases used</h3>
+      <ul>
+        <li>Population estimates, 1 October 2024 · SBJ</li>
+        <li>Vital statistics, 2024 preliminary · MHLW</li>
+        <li>National accounts, calendar 2024 · Cabinet Office</li>
+        <li>Labour Force Survey and CPI, 2024 averages · SBJ</li>
+        <li>Trade statistics 2024 · MOF; visitor arrivals 2024 · JNTO</li>
+      </ul>
     </aside>
   </div>`;
 }

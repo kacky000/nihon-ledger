@@ -33,7 +33,9 @@ a { color: var(--indigo); }
 .nav a.on { background: #fff; color: var(--ink); font-weight: 600; }
 .menu-btn { display: none; margin-left: auto; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); border-radius: 6px; padding: 7px 12px; font: inherit; }
 
-.hero, .page-head { padding: 30px 0 10px; }
+.hero, .page-head { padding: 22px 0 4px; }
+.hero h1 { font-size: 34px; }
+.stack { display: grid; gap: 16px; }
 .kicker { text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; color: var(--vermilion); font-weight: 700; margin: 0 0 6px; }
 h1 { font-size: 38px; line-height: 1.15; margin: 0 0 10px; font-family: Georgia, "Times New Roman", serif; }
 .lede { font-size: 18px; max-width: 760px; color: var(--ink-2); margin: 0 0 16px; }

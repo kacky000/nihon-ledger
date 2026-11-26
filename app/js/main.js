@@ -69,6 +69,14 @@ view.addEventListener('click', (e) => {
     render(true);
     return;
   }
+  const tile = e.target.closest('[data-pref]');
+  if (tile) {
+    state.prefQuery = tile.dataset.pref;
+    state.prefRegion = 'all';
+    if (currentPath() === 'prefectures') render(true);
+    else location.hash = '#/prefectures';
+    return;
+  }
   const csv = e.target.closest('[data-csv]');
   if (csv) {
     const id = csv.dataset.csv;
